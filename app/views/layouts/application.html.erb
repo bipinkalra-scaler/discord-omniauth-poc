@@ -1,0 +1,22 @@
+# <!DOCTYPE html>
+# <html>
+#   <head>
+#     <title>DiscordPoc</title>
+#     <%= csrf_meta_tags %>
+
+#     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+#     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+#   </head>
+
+#   <body>
+#     <%= yield %>
+#   </body>
+# </html>
+
+
+<% unless current_user %> 
+  <%= button_to "Sign in with Discord", user_discord_omniauth_authorize_path %>
+<% else %>
+  <%= current_user[:name] %>
+  <%= button_to "Logout", destroy_user_session_path, method: :delete %>
+<% end %>
